@@ -76,12 +76,18 @@ void search (vector<vector<State>> board, vector<int> init, vector<int> goal, in
                                 {0,0,0,0,0,0},
                                 {0,0,0,0,0,0}};
 
+  vector<vector<int>> expand = {{1,-1,-1,-1,-1,-1},
+                                {-1,-1,-1,-1,-1,-1},
+                                {-1,-1,-1,-1,-1,-1},
+                                {-1,-1,-1,-1,-1,-1},
+                                {-1,-1,-1,-1,-1,-1}};                                
+
  vector<vector<int>> delta = {{-1,0},     //up
                               {0,-1},     //left
                               {1,0},       //down
                               {0,1}};      //right                         
 
-
+ int step = 1;
  closed[0][0] = 1;
  int x = init[0];
  int y = init[1];
@@ -131,6 +137,8 @@ void search (vector<vector<State>> board, vector<int> init, vector<int> goal, in
 
             int g2 = g + cost;
             open.push_back({g2,x2,y2});
+            step++;
+            expand[x2][y2] = step;
             closed[x2][y2] = 1;
           }
         }
@@ -138,4 +146,12 @@ void search (vector<vector<State>> board, vector<int> init, vector<int> goal, in
       }
   }
  }
+ 
+  for (int i = 0; i < expand.size(); i++) {
+    for (int j = 0; j < expand[i].size(); j++) {
+      cout << expand[i][j]<<" ";
+    }
+    cout << "\n";
+  }
+
 }
