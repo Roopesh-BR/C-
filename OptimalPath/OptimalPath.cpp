@@ -1,6 +1,5 @@
 #include"OptimalPath.h"
 
-
 int main() {
   auto board = ReadBoardFile("C:/roopesh/new_project/Udacity/C++ nanodegree/foundations/Board.txt");
   PrintBoard(board);
